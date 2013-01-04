@@ -38,6 +38,7 @@
 #include "wm8994.h"
 #include "wm_hubs.h"
 
+<<<<<<< HEAD
 #include <asm/gpio.h>
 //#include <mach/gpio-names.h>
 
@@ -65,6 +66,15 @@ struct fll_config {
 	int in;
 	int out;
 };
+=======
+#include "boeffla_sound.h"
+
+
+#define WM1811_JACKDET_MODE_NONE  0x0000
+#define WM1811_JACKDET_MODE_JACK  0x0100
+#define WM1811_JACKDET_MODE_MIC   0x0080
+#define WM1811_JACKDET_MODE_AUDIO 0x0180
+>>>>>>> 6348671... Boeffla-Sound: Engine 1.6.0
 
 #define WM8994_NUM_DRC 3
 #define WM8994_NUM_EQ  3
@@ -197,6 +207,8 @@ static int wm8994_write(struct snd_soc_codec *codec, unsigned int reg,
 	int ret;
 
 	BUG_ON(reg > WM8994_MAX_REGISTER);
+
+	value = Boeffla_sound_hook_wm8994_write(reg, value);
 
 	if (!wm8994_volatile(codec, reg)) {
 		ret = snd_soc_cache_write(codec, reg, value);
@@ -3720,7 +3732,11 @@ static int wm8994_codec_probe(struct snd_soc_codec *codec)
 		break;
 	}
 
+<<<<<<< HEAD
     wm8994_codec = codec;
+=======
+	Boeffla_sound_hook_wm8994_pcm_probe(codec);
+>>>>>>> 6348671... Boeffla-Sound: Engine 1.6.0
 
 	return 0;
 
