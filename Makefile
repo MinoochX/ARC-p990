@@ -339,11 +339,11 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   = -O3 -fomit-frame-pointer -funswitch-loops -mtune=cortex-a9 -mfloat-abi=softfp -mfpu=vfpv3-d16 -ftree-vectorize -ffast-math 
-AFLAGS_MODULE   = -O3 -fomit-frame-pointer -funswitch-loops -mtune=cortex-a9 -mfloat-abi=softfp -mfpu=vfpv3-d16 -ftree-vectorize -ffast-math
+CFLAGS_MODULE   = 
+AFLAGS_MODULE   = 
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -O3 -fomit-frame-pointer -funswitch-loops -mtune=cortex-a9 -mfloat-abi=softfp -mfpu=vfpv3-d16 -ftree-vectorize -ffast-math
-AFLAGS_KERNEL	= -O3 -fomit-frame-pointer -funswitch-loops -mtune=cortex-a9 -mfloat-abi=softfp -mfpu=vfpv3-d16 -ftree-vectorize -ffast-math
+CFLAGS_KERNEL	= 
+AFLAGS_KERNEL	= 
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
@@ -359,6 +359,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
