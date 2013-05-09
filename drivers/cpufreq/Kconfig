@@ -271,7 +271,6 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  If in doubt, say N.
 
-<<<<<<< HEAD
 config CPU_FREQ_GOV_HOTPLUG
 	tristate "'hotplug' cpufreq governor"
 	depends on CPU_FREQ && NO_HZ && HOTPLUG_CPU
@@ -308,7 +307,7 @@ config CPU_FREQ_GOV_DYNAMIC_INTERACTIVE
 	  For details, take a look at linux/Documentation/cpu-freq.
 
 	  If in doubt, say N.
-=======
+
 config CPU_FREQ_MIN_TICKS
 	int "Ticks between governor polling interval."
 	default 10
@@ -323,6 +322,5 @@ config CPU_FREQ_SAMPLING_LATENCY_MULTIPLIER
 	help
 	  Sampling latency rate multiplied by the cpu switch latency.
 	  Affects governor polling.
->>>>>>> e931840... Added lagfree governor
 
 endif	# CPU_FREQ
