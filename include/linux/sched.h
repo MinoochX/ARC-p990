@@ -145,7 +145,6 @@ extern unsigned long this_cpu_load(void);
 
 extern void calc_global_load(unsigned long ticks);
 
-extern void prepare_calc_load(void);
 extern unsigned long get_parent_ip(unsigned long addr);
 
 struct seq_file;
@@ -361,8 +360,7 @@ extern signed long schedule_timeout_interruptible(signed long timeout);
 extern signed long schedule_timeout_killable(signed long timeout);
 extern signed long schedule_timeout_uninterruptible(signed long timeout);
 asmlinkage void schedule(void);
-extern void schedule_preempt_disabled(void);
-extern int mutex_spin_on_owner(struct mutex *lock, struct task_struct *owner);
+extern int mutex_spin_on_owner(struct mutex *lock, struct thread_info *owner);
 
 struct nsproxy;
 struct user_namespace;
@@ -1827,14 +1825,6 @@ static inline int set_cpus_allowed_ptr(struct task_struct *p,
 	return 0;
 }
 #endif
-
-#ifdef CONFIG_NO_HZ
-void calc_load_enter_idle(void);
-void calc_load_exit_idle(void);
-#else
-static inline void calc_load_enter_idle(void) { }
-static inline void calc_load_exit_idle(void) { }
-#endif /* CONFIG_NO_HZ */
 
 #ifndef CONFIG_CPUMASK_OFFSTACK
 static inline int set_cpus_allowed(struct task_struct *p, cpumask_t new_mask)
