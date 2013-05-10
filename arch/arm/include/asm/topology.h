@@ -28,29 +28,15 @@ void init_cpu_topology(void);
 void store_cpu_topology(unsigned int cpuid);
 const struct cpumask *cpu_coregroup_mask(int cpu);
 
-<<<<<<< HEAD
-=======
 void set_power_scale(unsigned int cpu, unsigned int power);
-int topology_register_notifier(struct notifier_block *nb);
-int topology_unregister_notifier(struct notifier_block *nb);
-
->>>>>>> ce23eb5... ARM: topology: Add a topology update notification
 #else
 
 static inline void init_cpu_topology(void) { }
 static inline void store_cpu_topology(unsigned int cpuid) { }
 
-<<<<<<< HEAD
-=======
 static inline void set_power_scale(unsigned int cpu, unsigned int power) { }
-static inline int topology_register_notifier(struct notifier_block *nb)  { }
-static inline int topology_unregister_notifier(struct notifier_block *nb)  { }
 
->>>>>>> ce23eb5... ARM: topology: Add a topology update notification
 #endif
-
-/* Topology notifier event */
-#define TOPOLOGY_POSTCHANGE 0
 
 #include <asm-generic/topology.h>
 
