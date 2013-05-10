@@ -56,19 +56,8 @@ static unsigned int prev_sched_mc_power_savings = 0;
 static unsigned int prev_sched_smt_power_savings = 0;
 
 /*
-
- * Update the cpu power of the scheduler
+ * default topology function
  */
-unsigned long arch_scale_freq_power(struct sched_domain *sd, int cpu)
-{
-	return per_cpu(cpu_scale, cpu);
-}
-
-void set_power_scale(unsigned int cpu, unsigned int power)
-{
-	per_cpu(cpu_scale, cpu) = power;
-}
-
 const struct cpumask *cpu_coregroup_mask(int cpu)
 {
 	return &cpu_topology[cpu].core_sibling;
