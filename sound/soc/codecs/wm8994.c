@@ -38,9 +38,6 @@
 #include "wm8994.h"
 #include "wm_hubs.h"
 
-<<<<<<< HEAD
-#include "boeffla_sound.h" 
-
 #include <asm/gpio.h>
 //#include <mach/gpio-names.h>
 
@@ -69,11 +66,6 @@ struct fll_config {
 	int out;
 };
 
-#include "boeffla_sound.h"
-
-
-=======
->>>>>>> parent of 6348671... Boeffla-Sound: Engine 1.6.0
 #define WM1811_JACKDET_MODE_NONE  0x0000
 #define WM1811_JACKDET_MODE_JACK  0x0100
 #define WM1811_JACKDET_MODE_MIC   0x0080
