@@ -66,11 +66,6 @@ struct fll_config {
 	int out;
 };
 
-#define WM1811_JACKDET_MODE_NONE  0x0000
-#define WM1811_JACKDET_MODE_JACK  0x0100
-#define WM1811_JACKDET_MODE_MIC   0x0080
-#define WM1811_JACKDET_MODE_AUDIO 0x0180
-
 #define WM8994_NUM_DRC 3
 #define WM8994_NUM_EQ  3
 
@@ -3724,6 +3719,8 @@ static int wm8994_codec_probe(struct snd_soc_codec *codec)
 					ARRAY_SIZE(wm8958_intercon));
 		break;
 	}
+
+    wm8994_codec = codec;
 
 	return 0;
 
