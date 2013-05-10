@@ -72,7 +72,11 @@ snd-soc-wm8988-objs := wm8988.o
 snd-soc-wm8990-objs := wm8990.o
 snd-soc-wm8991-objs := wm8991.o
 snd-soc-wm8993-objs := wm8993.o
+<<<<<<< HEAD
 snd-soc-wm8994-objs := wm8994.o wm8994-tables.o boeffla_sound.o
+=======
+snd-soc-wm8994-objs := wm8994.o wm8994-tables.o wm8958-dsp2.o
+>>>>>>> parent of 6348671... Boeffla-Sound: Engine 1.6.0
 snd-soc-wm8995-objs := wm8995.o
 snd-soc-wm9081-objs := wm9081.o
 snd-soc-wm9705-objs := wm9705.o
