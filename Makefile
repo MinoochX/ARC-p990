@@ -237,7 +237,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer
 HOSTCXXFLAGS = -O2
 
 # Decide whether to build built-in, modular, or both.
@@ -339,11 +339,27 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   = 
-AFLAGS_MODULE   = 
+
+CFLAGS_CARBU	= -O2 -march=armv7-a -mtune=cortex-a9 -mcpu=cortex-a9 \
+		  -mfloat-abi=softfp -msoft-float -mfpu=vfpv3-d16 \
+		  -ffast-math -ftree-loop-linear -ftree-vectorize \
+		  -floop-strip-mine -floop-block -fgraphite-identity \
+		  -floop-parallelize-all -ftree-loop-distribution -marm
+
+AFLAGS_CARBU	= -O2 -march=armv7-a -mtune=cortex-a9 -mcpu=cortex-a9 \
+		  -mfloat-abi=softfp -msoft-float -mfpu=vfpv3-d16 \
+		  -ffast-math -ftree-loop-linear -ftree-vectorize \
+		  -floop-strip-mine -floop-block -fgraphite-identity \
+		  -floop-parallelize-all -ftree-loop-distribution -marm
+
+    
+CFLAGS_MODULE   = $(CFLAGS_CARBU)
+AFLAGS_MODULE   = $(AFLAGS_CARBU)
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= 
-AFLAGS_KERNEL	= 
+
+
+CFLAGS_KERNEL	= $(CFLAGS_CARBU)
+AFLAGS_KERNEL	= $(AFLAGS_CARBU)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
@@ -359,7 +375,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks
-
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
@@ -1538,3 +1553,6 @@ FORCE:
 # Declare the contents of the .PHONY variable as phony.  We keep that
 # information in a variable so we can use it in if_changed and friends.
 .PHONY: $(PHONY)
+
+
+
