@@ -69,6 +69,7 @@ static const int cpu_millivolts[MAX_DVFS_FREQS] =
 #ifdef CONFIG_KOWALSKI_OC
 #ifdef CONFIG_KOWALSKI_MAX_OC
 	{
+		700 /* 164 MHz */,
 		750 /* 216 MHz */,
 		775 /* 312 MHz */,
 		825 /* 456 MHz */,
@@ -78,13 +79,11 @@ static const int cpu_millivolts[MAX_DVFS_FREQS] =
 		975 /* 912 MHz */,
 		1000 /* 1000 MHz */,
 		1075 /* 1100 MHz */,
-		1150 /* 1200 MHz */,
-		1200 /* 1300 MHz */,
-		1250 /* 1400 MHz */,
-		1300 /* 1500 MHz */
+		1150 /* 1200 MHz */
 	};
 #else
 	{
+		700 /* 164 MHz */,
 		750 /* 216 MHz */,
 		775 /* 312 MHz */,
 		825 /* 456 MHz */,
@@ -323,8 +322,8 @@ static struct dvfs dvfs_init[] = {
 };
 #elif defined(CONFIG_KOWALSKI_OC) && !defined(CONFIG_KOWALSKI_MAX_OC)
 static struct dvfs dvfs_init[] = {
-	CPU_DVFS("cpu", 1, 0, MHZ, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200),
-	CPU_DVFS("cpu", 1, 1, MHZ, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200),
+	CPU_DVFS("cpu", 1, 0, MHZ, 164, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200),
+	CPU_DVFS("cpu", 1, 1, MHZ, 164, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200),
 
 #if defined(CONFIG_MACH_BSSQ)
 	/* Core voltages (mV):           950,    1000,   1100,   1200,   1225,   1275,   1300 */
