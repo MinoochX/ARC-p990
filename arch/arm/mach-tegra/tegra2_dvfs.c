@@ -42,6 +42,7 @@ static bool tegra_dvfs_cpu_disabled = true;
 static const int core_millivolts[MAX_DVFS_FREQS] =
 #if defined(CONFIG_KOWALSKI_OC) && defined(CONFIG_KOWALSKI_MAX_OC)
 	{
+		900,
 		950,
 		1000,
 		1100,
@@ -55,6 +56,7 @@ static const int core_millivolts[MAX_DVFS_FREQS] =
 	};
 #else
 	{
+		900,
 		950,
 		1000,
 		1100,
@@ -98,6 +100,7 @@ static const int cpu_millivolts[MAX_DVFS_FREQS] =
 #endif // CONFIG_KOWALSKI_OC
 #else
 	{
+		700,
 		750,
 		775,
 		800,
@@ -263,8 +266,8 @@ static struct dvfs_rail *tegra2_dvfs_rails[] = {
 
 #if defined(CONFIG_KOWALSKI_OC) && defined(CONFIG_KOWALSKI_MAX_OC)
 static struct dvfs dvfs_init[] = {
-	CPU_DVFS("cpu", 1, 0, MHZ, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200, 1300, 1404, 1500),
-	CPU_DVFS("cpu", 1, 1, MHZ, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200, 1300, 1404, 1500),
+	CPU_DVFS("cpu", 1, 0, MHZ, 164, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200, 1300, 1404, 1500),
+	CPU_DVFS("cpu", 1, 1, MHZ, 164, 216, 312, 456, 608, 760, 816, 912, 1000, 1100, 1200, 1300, 1404, 1500),
 
 #if defined(CONFIG_MACH_BSSQ)
 	CORE_DVFS("emc",     -1, 1, KHZ, 47500,  126668, 380000, 380000, 380000, 380000, 760000, 760000, 760000, 760000),
